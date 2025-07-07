@@ -85,3 +85,4 @@ Platformun işleyişi, modüler ve verimli bir yapı üzerine kuruludur:
 Kullanıcı isteği → İlgili rota (routes/) → Middleware doğrulaması → Model üzerinden veritabanı işlemi → JSON yanıt.
 
 Bu modüler, güvenli ve ölçeklenebilir yapı sayesinde kullanıcılarımıza şiirle dolu, etkileşimli ve keyifli bir deneyim sunuyoruz. Platformumuz; kullanıcı geri bildirimleri, yeni özellikler ve güncellemelerle sürekli olarak gelişmeye devam edecektir.
+
