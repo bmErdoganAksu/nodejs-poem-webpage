@@ -1,0 +1,970 @@
+/* CSS Değişkenleri */
+:root { /* Kök seçici: Global CSS değişkenlerini tanımlar. */
+    --primary-color: #16A085; /* Ana yeşil renk */
+    --primary-dark: #388E3C; /* Koyu yeşil */
+    --danger-color: #F44336; /* Kırmızı */
+    --danger-dark: #D32F2F; /* Koyu kırmızı */
+    --secondary-color: #607D8B; /* Mavi-gri */
+    --secondary-dark: #455A64; /* Koyu mavi-gri */
+    --text-dark: #333; /* Koyu gri metin */
+    --text-gray: #555; /* Orta gri metin */
+    --text-light-gray: #999; /* Açık gri metin */
+    --bg-light: #f0f8e9; /* Açık yeşilimsi arka plan */
+    --bg-white: #ffffff; /* Beyaz arka plan */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1); /* Küçük gölge */
+    --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.1); /* Orta gölge */
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15); /* Büyük gölge */
+    --border-radius: 8px; /* Yuvarlatma */
+    --spacing-xs: 4px; /* Çok küçük boşluk */
+    --spacing-sm: 8px; /* Küçük boşluk */
+    --spacing-md: 16px; /* Orta boşluk */
+    --spacing-lg: 24px; /* Büyük boşluk */
+    --spacing-xl: 32px; /* Çok büyük boşluk */
+}
+
+/* Temel Sıfırlamalar ve Yazı Tipi */
+* { /* Evrensel seçici: Tüm HTML elemanlarına uygulanır. */
+    box-sizing: border-box; /* Kutu modelini border-box olarak ayarlar (padding ve border genişliğe dahil). */
+    margin: 0; /* Tüm dış boşlukları sıfırlar. */
+    padding: 0; /* Tüm iç boşlukları sıfırlar. */
+}
+
+body { /* Body etiketi stilleri: Sayfanın genel görünümünü etkiler. */
+    font-family: 'Lora', serif; /* Yazı tipi ailesini belirler. */
+    line-height: 1.6; /* Satır yüksekliğini ayarlar. */
+    color: var(--text-dark); /* Metin rengini koyu gri değişkenden alır. */
+    background-color: var(--bg-light); /* Arka plan rengini açık yeşilimsi değişkenden alır. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    min-height: 100vh; /* Minimum yüksekliği görünüm yüksekliğinin tamamı olarak ayarlar. */
+}
+
+h1, h2, h3, h4, h5, h6 { /* Başlık etiketleri stilleri: Tüm başlık elemanlarını etkiler. */
+    font-family: 'Playfair Display', serif; /* Başlıklar için farklı bir yazı tipi ailesi belirler. */
+    color: var(--primary-dark); /* Başlık metin rengini koyu yeşil değişkenden alır. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu orta boşluk değişkenden alır. */
+}
+
+a { /* Bağlantı etiketleri stilleri: Tüm bağlantı elemanlarını etkiler. */
+    color: var(--primary-color); /* Bağlantı metin rengini ana yeşil değişkenden alır. */
+    text-decoration: none; /* Metin alt çizgisini kaldırır. */
+    transition: color 0.3s ease; /* Renk değişimi için yumuşak geçiş efekti ekler. */
+}
+
+a:hover { /* Bağlantıların üzerine gelindiğinde: Bağlantı rengini etkiler. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkene değiştirir. */
+}
+
+ul { /* Sırasız liste etiketleri stilleri: Liste elemanlarını etkiler. */
+    list-style: none; /* Liste işaretlerini kaldırır. */
+}
+
+button, input[type="submit"] { /* Buton ve submit tipi input stilleri: Butonların ve gönderim düğmelerinin görünümünü etkiler. */
+    cursor: pointer; /* Fare imlecini işaretçi yapar. */
+    border: none; /* Kenarlığı kaldırır. */
+    padding: var(--spacing-sm) var(--spacing-md); /* İç boşlukları küçük ve orta boşluk değişkenlerinden alır. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Arka plan rengi ve dönüşüm için yumuşak geçiş efekti ekler. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    font-size: 1rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+button:active, input[type="submit"]:active { /* Buton ve submit tipi input aktifken (tıklandığında): Butonların tıklandığında verdiği görsel geri bildirimi etkiler. */
+    transform: translateY(1px); /* Dikeyde 1 piksel aşağı kaydırır (basılma efekti). */
+}
+
+.btn-primary { /* Birincil buton sınıfı: Temel eylem butonlarını etkiler. */
+    background-color: var(--primary-color); /* Arka plan rengini ana yeşil değişkenden alır. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+}
+
+.btn-primary:hover { /* Birincil butonun üzerine gelindiğinde: Birincil butonun fareyle üzerine gelindiğindeki görünümünü etkiler. */
+    background-color: var(--primary-dark); /* Arka plan rengini koyu yeşil değişkene değiştirir. */
+}
+
+.btn-danger { /* Tehlike (kırmızı) butonu sınıfı: Silme veya tehlikeli eylem butonlarını etkiler. */
+    background-color: var(--danger-color); /* Arka plan rengini kırmızı değişkenden alır. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+}
+
+.btn-danger:hover { /* Tehlike butonunun üzerine gelindiğinde: Tehlike butonunun fareyle üzerine gelindiğindeki görünümünü etkiler. */
+    background-color: var(--danger-dark); /* Arka plan rengini koyu kırmızı değişkene değiştirir. */
+}
+
+.btn-secondary { /* İkincil buton sınıfı: İkincil öncelikli butonları etkiler. */
+    background-color: var(--secondary-color); /* Arka plan rengini mavi-gri değişkenden alır. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+}
+
+.btn-secondary:hover { /* İkincil butonun üzerine gelindiğinde: İkincil butonun fareyle üzerine gelindiğindeki görünümünü etkiler. */
+    background-color: var(--secondary-dark); /* Arka plan rengini koyu mavi-gri değişkene değiştirir. */
+}
+
+.hidden { /* Gizli eleman sınıfı: Herhangi bir elemanı gizlemek için kullanılır. */
+    display: none !important; /* Elemanı tamamen gizler (önemli olarak ayarlanmıştır). */
+}
+
+.error-message { /* Hata mesajı sınıfı: Hata mesajlarının görünümünü etkiler. */
+    color: var(--danger-color); /* Metin rengini kırmızı değişkenden alır. */
+    margin-top: var(--spacing-sm); /* Üst dış boşluğu küçük boşluk değişkenden alır. */
+    text-align: center; /* Metni ortalar. */
+}
+
+/* Başlık Alanı */
+header { /* Başlık alanı etiketi stilleri: Sayfanın üst kısmındaki başlık bölümünü etkiler. */
+    background-color: var(--primary-color); /* Arka plan rengini ana yeşil değişkenden alır. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+    padding: var(--spacing-md) var(--spacing-lg); /* İç boşlukları orta ve büyük boşluk değişkenlerinden alır. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    align-items: center; /* Öğeleri dikeyde ortalar. */
+    justify-content: center; /* Öğeleri yatayda ortalar. */
+    text-align: center; /* Metni ortalar. */
+    position: relative; /* Konumlandırmayı göreceli yapar. */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+    flex-wrap: wrap; /* Küçük ekranlarda sarmalama yapar. */
+}
+
+#header-logo { /* Başlık logosu ID'si: Başlık alanındaki logoyu etkiler. */
+    width: 60px; /* Logoyu küçültür. */
+    height: 60px; /* Logoyu küçültür. */
+    border-radius: 50%; /* Logoyu yuvarlak yapar. */
+    object-fit: cover; /* Resmin kutuyu kaplamasını sağlar. */
+    margin-right: var(--spacing-md); /* Sağ dış boşluğu orta boşluk değişkenden alır. */
+    border: 2px solid var(--bg-white); /* Beyaz kenarlık ekler. */
+}
+
+header h1 { /* Başlık alanı içindeki h1 etiketi stilleri: Başlık alanındaki ana başlığı etkiler. */
+    margin: 0; /* Dış boşlukları sıfırlar. */
+    font-size: clamp(1.8rem, 4vw, 2.8rem); /* Başlık boyutunu ayarlar (min, tercih edilen, max değerlerle). */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+    flex-grow: 1; /* Alana yayılsın. */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Metne hafif gölge ekler. */
+}
+
+/* Navigasyon Alanı */
+nav { /* Navigasyon etiketi stilleri: Ana navigasyon menüsünü etkiler. */
+    background-color: var(--secondary-dark); /* Arka plan rengini koyu mavi-gri değişkenden alır. */
+    padding: var(--spacing-sm) 0; /* Üst ve alt iç boşlukları küçük boşluktan alır, yanları sıfırlar. */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+}
+
+.nav-content-wrapper { /* Navigasyon içeriği sarmalayıcı sınıfı: Navigasyon bağlantılarının ve butonlarının düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    justify-content: space-between; /* Öğeleri iki yana yaslar. */
+    align-items: center; /* Öğeleri dikeyde ortalar. */
+    max-width: 1200px; /* Maksimum genişliği ayarlar. */
+    margin: 0 auto; /* Yatayda ortalar. */
+    padding: 0 var(--spacing-lg); /* Yan iç boşlukları büyük boşluktan alır. */
+    flex-wrap: wrap; /* Küçük ekranlarda sarmalama yapar. */
+}
+
+.nav-links-group { /* Navigasyon bağlantı grubu sınıfı: Navigasyon içindeki bağlantı gruplarını etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-wrap: wrap; /* Öğeleri sarmalar. */
+}
+
+.nav-links-group li a { /* Navigasyon bağlantı grubu içindeki liste elemanı ve bağlantı stilleri: Navigasyon menüsü bağlantılarını etkiler. */
+    display: block; /* Bağlantıyı blok eleman yapar. */
+    padding: var(--spacing-sm) var(--spacing-md); /* İç boşlukları ayarlar. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    transition: background-color 0.3s ease; /* Arka plan rengi değişimi için yumuşak geçiş efekti ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+}
+
+.nav-links-group li a:hover,
+.nav-links-group li a.active-link { /* Navigasyon bağlantılarının üzerine gelindiğinde veya aktifken: Navigasyon menüsü bağlantılarının etkileşim ve aktif durumunu etkiler. */
+    background-color: var(--secondary-color); /* Arka plan rengini ikincil renk değişkene değiştirir. */
+}
+
+#logout-btn { /* Çıkış butonu ID'si: Çıkış butonunun görünümünü etkiler. */
+    padding: var(--spacing-sm) var(--spacing-md); /* İç boşlukları ayarlar. */
+    font-size: 0.9rem; /* Yazı tipi boyutunu ayarlar. */
+    white-space: nowrap; /* Metni tek satırda tutar. */
+}
+
+#welcome-message { /* Hoş geldin mesajı ID'si: Kullanıcıya gösterilen hoş geldin mesajının görünümünü etkiler. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+    margin-right: var(--spacing-md); /* Sağ dış boşluğu orta boşluk değişkenden alır. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    white-space: nowrap; /* Metni tek satırda tutar. */
+}
+
+/* Ana İçerik ve Kenar Çubuğu Düzeni */
+main#app { /* Ana uygulama alanı ID'si: Sayfanın ana içerik ve kenar çubuğu düzenini etkiler. */
+    display: flex; /* Flexbox düzeni. */
+    flex-direction: row; /* Öğeleri her zaman yatay hizalar. */
+    flex: 1; /* Mevcut alanı doldurur. */
+    max-width: 1200px; /* Varsayılan maksimum genişlik. */
+    margin: 0 auto; /* Yatayda ortalar. */
+    padding: var(--spacing-lg); /* İç boşluk. */
+    gap: var(--spacing-lg); /* Öğeler arasında boşluk. */
+    align-items: flex-start; /* Dikeyde yukarı hizalar. */
+    transition: all 0.3s ease-in-out; /* Geçiş animasyonu ekle. */
+}
+
+/* JavaScript ile eklenecek sınıf: belirli bölümler aktifken ana içeriği tam genişlik yapar */
+body.full-width-section-active main#app { /* Body etiketi "full-width-section-active" sınıfına sahipken ana uygulama alanını etkiler (JavaScript ile kontrol edilir). */
+    max-width: none; /* Maksimum genişlik kısıtlamasını kaldırır. */
+    width: 100%; /* Tam genişliği kaplar. */
+    padding: 0; /* İç boşlukları kaldırır. */
+    gap: 0; /* Öğeler arasındaki boşluğu kaldırır. */
+    flex-direction: column; /* İçeriği dikey olarak sıralar. */
+    align-items: center; /* İçeriği yatayda ortalar. */
+}
+
+/* Sidebar dışındaki tüm ana section elemanlarının kalan alanı doldurmasını sağlar */
+main#app > section:not(.poem-sidebar, .hidden) { /* Ana uygulama alanı içindeki kenar çubuğu ve gizli olmayan tüm section elemanlarını etkiler. */
+    flex: 1; /* Kalan yatay alanı doldurur. */
+    max-width: 100%; /* Kendi içindeki içeriğin tam genişliği kullanmasına izin verir. */
+    width: 100%; /* Gerekirse tam genişlik alır. */
+}
+
+/* Kenar Çubuğu */
+.poem-sidebar { /* Şiir kenar çubuğu sınıfı: Kenar çubuğunun görünümünü ve konumunu etkiler. */
+    background-color: var(--bg-white); /* Arka plan rengini beyaz değişkenden alır. */
+    padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    box-shadow: var(--shadow-md); /* Orta gölge ekler. */
+    width: 250px; /* Sabit genişlik. */
+    min-width: 200px; /* Minimum genişlik. */
+    flex-shrink: 0; /* Küçülmesini engeller. */
+    position: sticky; /* Sayfa kaydırıldığında sabit kalır. */
+    top: 0; /* Header ve nav yüksekliğine göre ayarla. */
+    max-height: calc(100vh - (var(--spacing-lg) * 2 + 60px + 60px)); /* Ekran yüksekliğine göre max yükseklik. */
+    overflow-y: auto; /* İçerik taşarsa kaydırma çubuğu. */
+    transition: all 0.3s ease-in-out; /* Geçiş animasyonu ekle. */
+}
+
+/* JavaScript ile eklenecek sınıf: belirli bölümler aktifken kenar çubuğunu gizler */
+body.full-width-section-active .poem-sidebar { /* Body etiketi "full-width-section-active" sınıfına sahipken kenar çubuğunu etkiler. */
+    display: none; /* Kenar çubuğunu gizler. */
+}
+
+.poem-sidebar h3 { /* Kenar çubuğu içindeki h3 etiketi stilleri: Kenar çubuğu başlıklarını etkiler. */
+    text-align: center; /* Metni ortalar. */
+    color: var(--secondary-dark); /* Metin rengini koyu mavi-gri değişkenden alır. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    padding-bottom: var(--spacing-sm); /* Alt iç boşluğu ayarlar. */
+    border-bottom: 1px solid var(--bg-light); /* Alt kenarlık ekler. */
+}
+
+.poem-sidebar ul { /* Kenar çubuğu içindeki sırasız liste stilleri: Kenar çubuğu liste elemanlarını etkiler. */
+    font-size: 0.95rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+.poem-sidebar li { /* Kenar çubuğu içindeki liste elemanı stilleri: Kenar çubuğu liste öğelerini etkiler. */
+    margin-bottom: var(--spacing-xs); /* Alt dış boşluğu ayarlar. */
+}
+
+.poem-sidebar a { /* Kenar çubuğu içindeki bağlantı stilleri: Kenar çubuğu bağlantılarını etkiler. */
+    display: block; /* Bağlantıyı blok eleman yapar. */
+    padding: var(--spacing-xs) var(--spacing-sm); /* İç boşlukları ayarlar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Arka plan rengi ve renk değişimi için yumuşak geçiş efekti ekler. */
+}
+
+.poem-sidebar a:hover { /* Kenar çubuğu bağlantılarının üzerine gelindiğinde: Kenar çubuğu bağlantılarının fareyle üzerine gelindiğindeki görünümünü etkiler. */
+    background-color: var(--bg-light); /* Arka plan rengini açık yeşilimsi değişkene değiştirir. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkene değiştirir. */
+}
+
+.poem-sidebar a.active { /* Kenar çubuğu bağlantıları aktifken: Kenar çubuğu bağlantılarının aktif durumdaki görünümünü etkiler. */
+    background-color: var(--primary-color); /* Arka plan rengini ana yeşil değişkene değiştirir. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkene değiştirir. */
+}
+
+/* Ortak Bölüm Stilleri */
+section { /* Tüm section elemanları stilleri: Sayfadaki genel bölümleri etkiler. */
+    background-color: var(--bg-white); /* Arka plan rengini beyaz değişkenden alır. */
+    padding: var(--spacing-lg); /* İç boşlukları ayarlar. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    box-shadow: var(--shadow-md); /* Orta gölge ekler. */
+    margin-bottom: var(--spacing-lg); /* Alt dış boşluğu ayarlar. */
+}
+
+section:last-child { /* Son section elemanı stilleri: Son section elemanının alt dış boşluğunu etkiler. */
+    margin-bottom: 0; /* Alt dış boşluğu sıfırlar. */
+}
+
+section h2 { /* Section elemanları içindeki h2 etiketi stilleri: Bölüm başlıklarını etkiler. */
+    text-align: center; /* Metni ortalar. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkenden alır. */
+    margin-bottom: var(--spacing-xl); /* Alt dış boşluğu çok büyük boşluk değişkenden alır. */
+}
+
+/* Şiir Ekle Bölümü */
+#add-poem-section { /* Şiir ekleme bölümü ID'si: Şiir ekleme formunun bulunduğu bölümü etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    align-items: center; /* İçeriği yatayda ortalar. */
+    margin: 0; /* Sayfayı sola/sağa yaslamak için ortalamayı kaldırır. */
+    padding: var(--spacing-lg); /* İç boşlukları ayarlar. */
+    background-color: var(--bg-white); /* Arka plan rengini beyaz değişkenden alır. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    box-shadow: var(--shadow-md); /* Orta gölge ekler. */
+    border: 1px solid #e0e0e0; /* Kenarlık ekler. */
+    width: 100%; /* Tam genişlik alır. */
+    /* Bu bölüm aktifken ana içeriğin paddingini ve max-width'ini sıfırlayan body.full-width-section-active kullanılır */
+}
+
+#add-poem-section form { /* Şiir ekleme bölümü içindeki form stilleri: Şiir ekleme formunun düzenini etkiler. */
+    width: 100%; /* Formun ebeveynine göre tam genişlik almasını sağlar. */
+    max-width: 800px; /* Form içeriği için maksimum genişlik ekler (isteğe bağlı). */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    gap: var(--spacing-md); /* Öğeler arasında boşluk. */
+}
+
+#add-poem-section label { /* Şiir ekleme bölümü içindeki etiket stilleri: Form etiketlerini etkiler. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    margin-bottom: var(--spacing-xs); /* Alt dış boşluğu ayarlar. */
+    display: block; /* Etiketi blok eleman yapar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+#add-poem-section input[type="text"],
+#add-poem-section input[type="email"],
+#add-poem-section input[type="password"],
+#add-poem-section textarea { /* Şiir ekleme bölümü içindeki metin, e-posta, parola inputları ve textarea stilleri: Form inputlarını ve metin alanlarını etkiler. */
+    width: 100%; /* Tam genişlik alır. */
+    padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    border: 1px solid #ccc; /* Kenarlık ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    font-size: 1rem; /* Yazı tipi boyutunu ayarlar. */
+    font-family: 'Lora', serif; /* Yazı tipi ailesini belirler. */
+    resize: vertical; /* Dikey olarak yeniden boyutlandırmaya izin verir. */
+}
+
+#add-poem-section textarea { /* Şiir ekleme bölümü içindeki textarea stilleri: Şiir metin alanını etkiler. */
+    min-height: 150px; /* Minimum yüksekliği ayarlar. */
+}
+
+#add-poem-section button { /* Şiir ekleme bölümü içindeki buton stilleri: Form gönderim butonunu etkiler. */
+    width: auto; /* Genişliği içeriğe göre ayarlar. */
+    align-self: flex-end; /* Sağ tarafa hizalar. */
+    margin-top: var(--spacing-md); /* Üst dış boşluğu ayarlar. */
+}
+
+/* Auth Bölümü (Giriş/Kayıt) */
+#auth-section { /* Kimlik doğrulama bölümü ID'si: Giriş ve kayıt formlarının bulunduğu bölümü etkiler. */
+    max-width: 500px; /* Maksimum genişliği ayarlar. */
+    margin: 0 auto; /* Yatayda ortalar. */
+    text-align: center; /* Metni ortalar. */
+}
+
+#auth-section h3 { /* Kimlik doğrulama bölümü içindeki h3 etiketi stilleri: Giriş/kayıt başlıklarını etkiler. */
+    color: var(--secondary-dark); /* Metin rengini koyu mavi-gri değişkenden alır. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+}
+
+#auth-section form { /* Kimlik doğrulama bölümü içindeki form stilleri: Giriş/kayıt formunun düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    gap: var(--spacing-md); /* Öğeler arasında boşluk. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+}
+
+#auth-section label { /* Kimlik doğrulama bölümü içindeki etiket stilleri: Giriş/kayıt form etiketlerini etkiler. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    align-self: flex-start; /* Sola hizalar. */
+    margin-left: var(--spacing-xs); /* Sol dış boşluğu ayarlar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+#auth-section input[type="text"],
+#auth-section input[type="email"],
+#auth-section input[type="password"] { /* Kimlik doğrulama bölümü içindeki metin, e-posta, parola inputları stilleri: Giriş/kayıt form inputlarını etkiler. */
+    padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    border: 1px solid #ccc; /* Kenarlık ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    font-size: 1rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+#auth-section button { /* Kimlik doğrulama bölümü içindeki buton stilleri: Giriş/kayıt butonlarını etkiler. */
+    align-self: center; /* Ortalar. */
+    margin-top: var(--spacing-md); /* Üst dış boşluğu ayarlar. */
+    width: 100%; /* Mobil görünümde tam genişlik. */
+    max-width: 200px; /* Masaüstünde dar kalır. */
+}
+
+/* Şiir Listesi Bölümü */
+#poems-list-section #poems-div { /* Şiir listesi bölümü içindeki şiir div'i ID'si: Şiir kartlarının grid düzenini etkiler. */
+    /* minmax(300px, 1fr) 280px olarak değiştirildi */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Izgara sütunlarını ayarlar. */
+    gap: var(--spacing-lg); /* Izgara öğeleri arasında boşluk. */
+}
+
+.poem-card { /* Şiir kartı sınıfı: Her bir şiir kartının görünümünü etkiler. */
+    background-color: var(--bg-light); /* Arka plan rengini açık yeşilimsi değişkenden alır. */
+    padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+    border: 1px solid #e0e0e0; /* Kenarlık ekler. */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Dönüşüm ve gölge değişimi için yumuşak geçiş efekti ekler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    height: 100%; /* Kartların eşit yükseklikte olmasını sağlar. */
+}
+
+.poem-card:hover { /* Şiir kartının üzerine gelindiğinde: Şiir kartının fareyle üzerine gelindiğindeki etkileşimini etkiler. */
+    transform: translateY(-3px); /* Dikeyde 3 piksel yukarı kaydırır. */
+    box-shadow: var(--shadow-md); /* Orta gölge ekler. */
+}
+
+.poem-card h3 { /* Şiir kartı içindeki h3 etiketi stilleri: Şiir başlıklarını etkiler. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkenden alır. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    font-size: 1.5rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+.poem-card p { /* Şiir kartı içindeki paragraf stilleri: Şiir metnini etkiler. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+    font-size: 0.95rem; /* Yazı tipi boyutunu ayarlar. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    flex-grow: 1; /* İçeriğin kart içinde esnek büyümesini sağlar. */
+    white-space: pre-wrap; /* Şiir satır sonlarını ve boşlukları korur. */
+}
+
+.poem-card .author-info { /* Şiir kartı içindeki yazar bilgisi sınıfı: Şiir yazar bilgilerini etkiler. */
+    font-style: italic; /* Metni italik yapar. */
+    color: var(--text-light-gray); /* Metin rengini açık gri değişkenden alır. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    font-size: 0.85rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+.poem-card .actions { /* Şiir kartı içindeki eylemler sınıfı: Şiir kartındaki butonların düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    justify-content: flex-end; /* Sağ tarafa hizalar. */
+    gap: var(--spacing-sm); /* Öğeler arasında boşluk. */
+    margin-top: auto; /* Alt kısma yapıştırır. */
+}
+
+.poem-card .actions button { /* Şiir kartı içindeki eylemler butonları: Şiir kartındaki eylem butonlarını etkiler. */
+    font-size: 0.8rem; /* Yazı tipi boyutunu ayarlar. */
+    padding: var(--spacing-xs) var(--spacing-sm); /* İç boşlukları ayarlar. */
+}
+
+/* Yorum Bölümü */
+.comments-section { /* Yorum bölümü sınıfı: Yorumlar bölümünün genel stilini etkiler. */
+    margin-top: var(--spacing-md); /* Üst dış boşluğu ayarlar. */
+    padding-top: var(--spacing-md); /* Üst iç boşluğu ayarlar. */
+    border-top: 1px solid #eee; /* Üst kenarlık ekler. */
+}
+
+.comments-section h4 { /* Yorum bölümü içindeki h4 etiketi stilleri: Yorum bölümü başlıklarını etkiler. */
+    color: var(--secondary-dark); /* Metin rengini koyu mavi-gri değişkenden alır. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+}
+
+.comment-form { /* Yorum formu sınıfı: Yorum ekleme formunun düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    gap: var(--spacing-sm); /* Öğeler arasında boşluk. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+}
+
+.comment-form textarea { /* Yorum formu içindeki textarea stilleri: Yorum metin alanını etkiler. */
+    width: 100%; /* Tam genişlik alır. */
+    padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    border: 1px solid #ccc; /* Kenarlık ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    font-size: 0.9rem; /* Yazı tipi boyutunu ayarlar. */
+    min-height: 80px; /* Minimum yüksekliği ayarlar. */
+    resize: vertical; /* Dikey olarak yeniden boyutlandırmaya izin verir. */
+}
+
+.comment-form button { /* Yorum formu içindeki buton stilleri: Yorum gönderim butonunu etkiler. */
+    align-self: flex-end; /* Sağ tarafa hizalar. */
+}
+
+.comment-item { /* Yorum öğesi sınıfı: Her bir yorumun görünümünü etkiler. */
+    background-color: #f9f9f9; /* Arka plan rengini ayarlar. */
+    padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    border: 1px solid #eee; /* Kenarlık ekler. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+}
+
+.comment-item .comment-meta { /* Yorum öğesi içindeki yorum meta bilgileri sınıfı: Yorum yazar ve tarih bilgilerini etkiler. */
+    font-size: 0.8rem; /* Yazı tipi boyutunu ayarlar. */
+    color: var(--text-light-gray); /* Metin rengini açık gri değişkenden alır. */
+    margin-bottom: var(--spacing-xs); /* Alt dış boşluğu ayarlar. */
+}
+
+.comment-item .comment-meta strong { /* Yorum öğesi içindeki yorum meta bilgileri güçlü metin: Yorum yazar adını etkiler. */
+    color: var(--text-dark); /* Metin rengini koyu gri değişkenden alır. */
+}
+
+.comment-item p { /* Yorum öğesi içindeki paragraf stilleri: Yorum metnini etkiler. */
+    font-size: 0.9rem; /* Yazı tipi boyutunu ayarlar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+}
+
+.comment-item .comment-actions { /* Yorum öğesi içindeki yorum eylemleri sınıfı: Yorum üzerindeki düzenleme/silme butonlarının düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    gap: var(--spacing-sm); /* Öğeler arasında boşluk. */
+    justify-content: flex-end; /* Sağ tarafa hizalar. */
+}
+
+.comment-item .comment-actions button { /* Yorum öğesi içindeki yorum eylemleri butonları: Yorum üzerindeki eylem butonlarını etkiler. */
+    font-size: 0.75rem; /* Yazı tipi boyutunu ayarlar. */
+    padding: var(--spacing-xs); /* İç boşlukları ayarlar. */
+}
+
+/* Kullanıcı Profili Bölümü */
+#user-profile-section { /* Kullanıcı profili bölümü ID'si: Kullanıcı profili bilgilerinin ve düzenleme formunun bulunduğu bölümü etkiler. */
+    max-width: 700px; /* Maksimum genişliği ayarlar. */
+    margin: 0 auto; /* Yatayda ortalar. */
+}
+
+#user-profile-section #user-details p { /* Kullanıcı profili bölümü içindeki kullanıcı detayları paragraf stilleri: Kullanıcı bilgilerini etkiler. */
+    font-size: 1.1rem; /* Yazı tipi boyutunu ayarlar. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+}
+
+#user-profile-section #user-details strong { /* Kullanıcı profili bölümü içindeki kullanıcı detayları güçlü metin: Kullanıcı bilgi başlıklarını etkiler. */
+    color: var(--secondary-dark); /* Metin rengini koyu mavi-gri değişkenden alır. */
+}
+
+#user-profile-section h3 { /* Kullanıcı profili bölümü içindeki h3 etiketi stilleri: Profildeki alt başlıkları (örneğin "Şiirlerim") etkiler. */
+    margin-top: var(--spacing-lg); /* Üst dış boşluğu ayarlar. */
+    border-top: 1px solid #eee; /* Üst kenarlık ekler. */
+    padding-top: var(--spacing-md); /* Üst iç boşluğu ayarlar. */
+    color: var(--secondary-dark); /* Metin rengini koyu mavi-gri değişkenden alır. */
+}
+
+#user-profile-section form { /* Kullanıcı profili bölümü içindeki form stilleri: Profil düzenleme formunu etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    gap: var(--spacing-md); /* Öğeler arasında boşluk. */
+    max-width: 400px; /* Maksimum genişliği ayarlar. */
+    margin: 0 auto var(--spacing-lg) auto; /* Yatayda ortalar ve alt dış boşluğu ayarlar. */
+}
+
+#user-profile-section form label { /* Kullanıcı profili bölümü içindeki form etiketleri: Profil düzenleme form etiketlerini etkiler. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+#user-profile-section form input { /* Kullanıcı profili bölümü içindeki form inputları: Profil düzenleme form inputlarını etkiler. */
+    padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    border: 1px solid #ccc; /* Kenarlık ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+}
+
+#user-profile-section form button { /* Kullanıcı profili bölümü içindeki form butonları: Profil düzenleme form butonlarını etkiler. */
+    align-self: center; /* Ortalar. */
+}
+
+#user-profile-section #user-comments-list { /* Kullanıcı profili bölümü içindeki kullanıcı yorumları listesi ID'si: Kullanıcının yaptığı yorumların listesini etkiler. */
+    margin-top: var(--spacing-lg); /* Üst dış boşluğu ayarlar. */
+}
+
+#user-profile-section #user-comments-list h4 { /* Kullanıcı profili bölümü içindeki kullanıcı yorumları listesi h4 etiketi: Yorum listesi başlığını etkiler. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkenden alır. */
+}
+
+#user-profile-section #profile-logout-btn { /* Kullanıcı profili bölümü içindeki profil çıkış butonu ID'si: Profil sayfasındaki çıkış butonunu etkiler. */
+    display: block; /* Butonu blok eleman yapar. */
+    margin: var(--spacing-lg) auto 0 auto; /* Üst dış boşluğu ayarlar, yatayda ortalar. */
+}
+
+/* Şiir Düzenleme Bölümü */
+#edit-poem-section,
+#edit-comment-section,
+#user-management-section { /* Şiir düzenleme, yorum düzenleme ve kullanıcı yönetimi bölümü ID'leri: Bu bölümlerin genel düzenini etkiler. */
+    max-width: 700px; /* Maksimum genişliği ayarlar. */
+    margin: 0 auto; /* Yatayda ortalar. */
+}
+
+#edit-poem-section form,
+#edit-comment-section form,
+#user-management-section form { /* Şiir düzenleme, yorum düzenleme ve kullanıcı yönetimi formları: Bu bölümlerdeki formların düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+    gap: var(--spacing-md); /* Öğeler arasında boşluk. */
+}
+
+#edit-poem-section label,
+#edit-comment-section label,
+#user-management-section label { /* Şiir düzenleme, yorum düzenleme ve kullanıcı yönetimi etiketleri: Bu bölümlerdeki form etiketlerini etkiler. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+#edit-poem-section input,
+#edit-poem-section textarea,
+#edit-comment-section textarea,
+#user-management-section input,
+#user-management-section select { /* Şiir düzenleme, yorum düzenleme ve kullanıcı yönetimi inputları ve textarea'ları: Bu bölümlerdeki form inputlarını ve metin alanlarını etkiler. */
+    padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    border: 1px solid #ccc; /* Kenarlık ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    font-size: 1rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+#edit-poem-section textarea,
+#edit-comment-section textarea { /* Şiir düzenleme ve yorum düzenleme textarea'ları: Şiir ve yorum metin alanlarını etkiler. */
+    min-height: 120px; /* Minimum yüksekliği ayarlar. */
+    resize: vertical; /* Dikey olarak yeniden boyutlandırmaya izin verir. */
+}
+
+#edit-poem-section button,
+#edit-comment-section button,
+#user-management-section button { /* Şiir düzenleme, yorum düzenleme ve kullanıcı yönetimi butonları: Bu bölümlerdeki eylem butonlarını etkiler. */
+    align-self: flex-end; /* Sağ tarafa hizalar. */
+}
+
+#edit-poem-section #cancel-edit-poem-btn,
+#edit-comment-section #cancel-comment-edit-btn,
+#user-management-section #cancel-user-management-btn { /* Şiir düzenleme, yorum düzenleme ve kullanıcı yönetimi iptal butonları: İptal butonlarının sağ dış boşluğunu etkiler. */
+    margin-right: var(--spacing-sm); /* Sağ dış boşluğu ayarlar. */
+}
+
+/* Yönetici Paneli */
+#admin-panel-section { /* Yönetici paneli bölümü ID'si: Yönetici paneli içeriğinin düzenini etkiler. */
+    /* Yönetici paneli aktifken main#app genişlemelidir, ancak sidebar'ı gizlemeden */
+    max-width: none; /* Maksimum genişlik kısıtlamasını kaldırır. */
+    width: 100%; /* Tam genişliği kaplar. */
+}
+
+.admin-tabs { /* Yönetici sekme menüsü sınıfı: Yönetici panelindeki sekme menüsünün düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    justify-content: center; /* Öğeleri yatayda ortalar. */
+    margin-bottom: var(--spacing-lg); /* Alt dış boşluğu ayarlar. */
+    border-bottom: 2px solid var(--bg-light); /* Alt kenarlık ekler. */
+}
+
+.admin-tab-btn { /* Yönetici sekme butonu sınıfı: Yönetici panelindeki her bir sekme butonunu etkiler. */
+    background-color: var(--secondary-color); /* Arka plan rengini ikincil renk değişkenden alır. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+    padding: var(--spacing-sm) var(--spacing-md); /* İç boşlukları ayarlar. */
+    border-radius: var(--border-radius) var(--border-radius) 0 0; /* Köşeleri yuvarlatır (alt köşeler hariç). */
+    margin: 0 var(--spacing-xs); /* Yan dış boşlukları ayarlar. */
+    font-weight: bold; /* Yazı tipini kalın yapar. */
+    transition: background-color 0.3s ease; /* Arka plan rengi değişimi için yumuşak geçiş efekti ekler. */
+}
+
+.admin-tab-btn:hover { /* Yönetici sekme butonunun üzerine gelindiğinde: Sekme butonunun fareyle üzerine gelindiğindeki görünümünü etkiler. */
+    background-color: var(--secondary-dark); /* Arka plan rengini koyu ikincil renk değişkene değiştirir. */
+}
+
+.admin-tab-btn.active-tab { /* Yönetici sekme butonu aktifken: Aktif sekme butonunun görünümünü etkiler. */
+    background-color: var(--primary-color); /* Arka plan rengini ana yeşil değişkene değiştirir. */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+}
+
+.admin-tab-content { /* Yönetici sekme içeriği sınıfı: Her bir sekmenin içeriğini etkiler. */
+    padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    border: 1px solid var(--bg-light); /* Kenarlık ekler. */
+    border-radius: 0 0 var(--border-radius) var(--border-radius); /* Köşeleri yuvarlatır (üst köşeler hariç). */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+    background-color: #fcfcfc; /* Arka plan rengini ayarlar. */
+}
+
+.admin-tab-content h3 { /* Yönetici sekme içeriği içindeki h3 etiketi stilleri: Sekme içeriği başlıklarını etkiler. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkenden alır. */
+    text-align: center; /* Metni ortalar. */
+    margin-bottom: var(--spacing-lg); /* Alt dış boşluğu ayarlar. */
+}
+
+.admin-list-item { /* Yönetici liste öğesi sınıfı: Yönetici panelindeki listelenen öğelerin (şiirler, kullanıcılar, yorumlar) görünümünü etkiler. */
+    background-color: var(--bg-white); /* Arka plan rengini beyaz değişkenden alır. */
+    border: 1px solid #eee; /* Kenarlık ekler. */
+    padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    flex-wrap: wrap; /* Öğeleri sarmalar. */
+    justify-content: space-between; /* Öğeleri iki yana yaslar. */
+    align-items: center; /* Öğeleri dikeyde ortalar. */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+}
+
+.admin-list-item .details { /* Yönetici liste öğesi içindeki detaylar sınıfı: Liste öğesinin detay bilgilerini etkiler. */
+    flex-grow: 1; /* Esnek büyüme sağlar. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    flex-basis: 70%; /* Daha fazla yer kaplasın. */
+    min-width: 250px; /* Minimum genişliği ayarlar. */
+}
+
+.admin-list-item .details p { /* Yönetici liste öğesi içindeki detaylar paragraf stilleri: Detay bilgilerindeki metni etkiler. */
+    margin-bottom: var(--spacing-xs); /* Alt dış boşluğu ayarlar. */
+    font-size: 0.95rem; /* Yazı tipi boyutunu ayarlar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+.admin-list-item .details strong { /* Yönetici liste öğesi içindeki detaylar güçlü metin: Detay bilgilerindeki başlıkları etkiler. */
+    color: var(--text-dark); /* Metin rengini koyu gri değişkenden alır. */
+}
+
+.admin-list-item .actions { /* Yönetici liste öğesi içindeki eylemler sınıfı: Liste öğesindeki eylem butonlarının düzenini etkiler. */
+    display: flex; /* Flexbox düzenini etkinleştirir. */
+    gap: var(--spacing-sm); /* Öğeler arasında boşluk. */
+    flex-basis: 25%; /* Yanında yer kaplasın. */
+    justify-content: flex-end; /* Sağ tarafa hizalar. */
+    min-width: 150px; /* Minimum genişliği ayarlar. */
+}
+
+.admin-list-item .actions button, .admin-list-item .actions select { /* Yönetici liste öğesi içindeki eylemler butonları ve select kutuları: Eylem butonlarını ve seçim kutularını etkiler. */
+    font-size: 0.85rem; /* Yazı tipi boyutunu ayarlar. */
+    padding: var(--spacing-xs) var(--spacing-sm); /* İç boşlukları ayarlar. */
+}
+
+#admin-comments-content label { /* Yönetici yorum içeriği içindeki etiket stilleri: Yorum yönetimi etiketlerini etkiler. */
+    display: block; /* Etiketi blok eleman yapar. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+}
+
+#admin-comments-content input[type="checkbox"] { /* Yönetici yorum içeriği içindeki checkbox inputları: Yorum yönetimi checkbox'larını etkiler. */
+    margin-right: var(--spacing-xs); /* Sağ dış boşluğu ayarlar. */
+}
+
+/* İletişim Bölümü */
+#contact-section { /* İletişim bölümü ID'si: İletişim bilgilerinin bulunduğu bölümü etkiler. */
+    margin: 0; /* Sayfayı sola/sağa yaslamak için ortalamayı kaldırır. */
+    text-align: center; /* Metni ortalar. */
+    width: 100%; /* Tam genişlik alır. */
+    /* Bu bölüm aktifken ana içeriğin paddingini ve max-width'ini sıfırlayan body.full-width-section-active kullanılır */
+}
+
+#contact-section ul { /* İletişim bölümü içindeki sırasız liste stilleri: İletişim listesini etkiler. */
+    margin-top: var(--spacing-md); /* Üst dış boşluğu ayarlar. */
+}
+
+#contact-section li { /* İletişim bölümü içindeki liste elemanı stilleri: İletişim liste öğelerini etkiler. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+}
+
+#contact-section a { /* İletişim bölümü içindeki bağlantı stilleri: İletişim bağlantılarını etkiler. */
+    font-size: 1.1rem; /* Yazı tipi boyutunu ayarlar. */
+}
+
+/* Siteyi Nasıl Geliştirdim Bölümü */
+#about-section { /* Hakkında bölümü ID'si: Site hakkında bilgilerin bulunduğu bölümü etkiler. */
+    max-width: 900px; /* Maksimum genişliği ayarlar. */
+    margin: 0 auto; /* Yatayda ortalar. */
+    padding: var(--spacing-lg); /* İç boşlukları ayarlar. */
+    background-color: var(--bg-white); /* Arka plan rengini beyaz değişkenden alır. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    box-shadow: var(--shadow-md); /* Orta gölge ekler. */
+}
+
+#about-section .content-card { /* Hakkında bölümü içindeki içerik kartı sınıfı: Hakkında bölümündeki bilgi kartını etkiler. */
+    padding: var(--spacing-lg); /* İç boşlukları ayarlar. */
+    border: 1px solid #e0e0e0; /* Kenarlık ekler. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    background-color: #fdfdfd; /* Arka plan rengini ayarlar. */
+    box-shadow: var(--shadow-sm); /* Küçük gölge ekler. */
+}
+
+#about-section h2 { /* Hakkında bölümü içindeki h2 etiketi stilleri: Hakkında bölümü ana başlığını etkiler. */
+    color: var(--primary-dark); /* Metin rengini koyu yeşil değişkenden alır. */
+    font-size: 2.5rem; /* Yazı tipi boyutunu ayarlar. */
+    text-align: center; /* Metni ortalar. */
+    margin-bottom: var(--spacing-xl); /* Alt dış boşluğu çok büyük boşluk değişkenden alır. */
+}
+
+#about-section h3 { /* Hakkında bölümü içindeki h3 etiketi stilleri: Hakkında bölümündeki alt başlıkları etkiler. */
+    color: var(--secondary-dark); /* Metin rengini koyu mavi-gri değişkenden alır. */
+    font-size: 1.8rem; /* Yazı tipi boyutunu ayarlar. */
+    margin-top: var(--spacing-lg); /* Üst dış boşluğu ayarlar. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    border-bottom: 1px solid var(--bg-light); /* Alt kenarlık ekler. */
+    padding-bottom: var(--spacing-sm); /* Alt iç boşluğu ayarlar. */
+}
+
+#about-section h4 { /* Hakkında bölümü içindeki h4 etiketi stilleri: Hakkında bölümündeki daha küçük başlıkları etkiler. */
+    color: var(--primary-color); /* Metin rengini ana yeşil değişkenden alır. */
+    font-size: 1.4rem; /* Yazı tipi boyutunu ayarlar. */
+    margin-top: var(--spacing-md); /* Üst dış boşluğu ayarlar. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+}
+
+#about-section p { /* Hakkında bölümü içindeki paragraf stilleri: Hakkında bölümündeki metinleri etkiler. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    line-height: 1.7; /* Satır yüksekliğini ayarlar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+#about-section ul { /* Hakkında bölümü içindeki sırasız liste stilleri: Hakkında bölümündeki listeleri etkiler. */
+    margin-left: var(--spacing-lg); /* Sol dış boşluğu ayarlar. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    list-style-type: disc; /* Liste işaret tipini disk olarak ayarlar. */
+}
+
+#about-section ul ul { /* Hakkında bölümü içindeki iç içe sırasız liste stilleri: Hakkında bölümündeki alt listeleri etkiler. */
+    margin-left: var(--spacing-md); /* Sol dış boşluğu ayarlar. */
+    list-style-type: circle; /* Liste işaret tipini daire olarak ayarlar. */
+}
+
+#about-section li { /* Hakkında bölümü içindeki liste elemanı stilleri: Hakkında bölümündeki liste öğelerini etkiler. */
+    margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    color: var(--text-gray); /* Metin rengini gri değişkenden alır. */
+}
+
+#about-section pre { /* Hakkında bölümü içindeki pre etiketi stilleri: Kod örneklerini veya önceden biçimlendirilmiş metinleri etkiler. */
+    background-color: #f5f5f5; /* Arka plan rengini ayarlar. */
+    border: 1px solid #ddd; /* Kenarlık ekler. */
+    border-left: 4px solid var(--primary-color); /* Sol kenarlık ekler. */
+    padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    border-radius: var(--border-radius); /* Kenar yuvarlatmasını ayarlar. */
+    overflow-x: auto; /* Yatay taşmayı otomatik kaydırma çubuğu ile halleder. */
+    margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    font-family: 'Courier New', Courier, monospace; /* Yazı tipi ailesini belirler. */
+    font-size: 0.9rem; /* Yazı tipi boyutunu ayarlar. */
+    color: #444; /* Metin rengini ayarlar. */
+}
+
+/* Footer */
+footer { /* Footer etiketi stilleri: Sayfanın en altındaki bilgi alanını etkiler. */
+    background-color: var(--secondary-dark); /* Arka plan rengini koyu mavi-gri değişkenden alır. */
+    color: var(--bg-white); /* Metin rengini beyaz değişkenden alır. */
+    text-align: center; /* Metni ortalar. */
+    padding: var(--spacing-md) var(--spacing-lg); /* İç boşlukları ayarlar. */
+    margin-top: auto; /* Sayfanın altına yapışır. */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Üst gölge ekler. */
+}
+
+/* Duyarlı Tasarım */
+@media (max-width: 768px) { /* Maksimum genişlik 768px olduğunda (tablet ve küçük cihazlar): */
+    header { /* Başlık alanı stilleri: Başlık düzenini dikey yapar. */
+        flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+        padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    }
+
+    #header-logo { /* Başlık logosu stilleri: Logo dış boşluklarını ayarlar. */
+        margin-right: 0; /* Sağ dış boşluğu sıfırlar. */
+        margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    }
+
+    header h1 { /* Başlık alanı h1 etiketi stilleri: Başlık yazı tipi boyutunu küçültür. */
+        font-size: 2rem; /* Yazı tipi boyutunu ayarlar. */
+    }
+
+    .nav-content-wrapper { /* Navigasyon içeriği sarmalayıcı stilleri: Navigasyon öğelerini dikey sıralar ve hizalamayı değiştirir. */
+        flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+        padding: 0 var(--spacing-md); /* Yan iç boşlukları ayarlar. */
+        align-items: stretch; /* Öğeleri yatayda genişletir. */
+    }
+
+    .nav-links-group { /* Navigasyon bağlantı grubu stilleri: Navigasyon bağlantılarını dikey sıralar ve tam genişlik yapar. */
+        flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+        width: 100%; /* Tam genişlik alır. */
+        margin-bottom: var(--spacing-md); /* Alt dış boşluğu ayarlar. */
+    }
+
+    .nav-links-group li { /* Navigasyon bağlantı grubu liste elemanı stilleri: Liste öğeleri arasına boşluk ekler. */
+        margin-bottom: var(--spacing-xs); /* Alt dış boşluğu ayarlar. */
+    }
+
+    .nav-links-group li a { /* Navigasyon bağlantı grubu liste elemanı bağlantı stilleri: Bağlantıları ortalar. */
+        text-align: center; /* Metni ortalar. */
+        padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    }
+
+    #auth-links, #logged-in-links { /* Kimlik doğrulama ve oturum açmış bağlantıları stilleri: Bu link gruplarını dikey sıralar ve ortalar. */
+        display: flex; /* Flexbox düzenini etkinleştirir. */
+        flex-direction: column; /* Öğeleri dikey olarak sıralar. */
+        width: 100%; /* Tam genişlik alır. */
+        align-items: center; /* Öğeleri yatayda ortalar. */
+    }
+
+    #welcome-message { /* Hoş geldin mesajı stilleri: Hoş geldin mesajının dış boşluklarını ayarlar. */
+        margin-right: 0; /* Sağ dış boşluğu sıfırlar. */
+        margin-bottom: var(--spacing-sm); /* Alt dış boşluğu ayarlar. */
+    }
+
+    #logout-btn { /* Çıkış butonu stilleri: Çıkış butonunu tam genişlik yapar. */
+        width: 100%; /* Tam genişlik alır. */
+    }
+
+    main#app { /* Ana uygulama alanı stilleri: Küçük ekranlarda dikey düzeni ve boşlukları ayarlar. */
+        flex-direction: column; /* Küçük ekranlarda dikey düzen. */
+        padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+        gap: var(--spacing-md); /* Öğeler arasında boşluk. */
+    }
+
+    .poem-sidebar { /* Şiir kenar çubuğu stilleri: Kenar çubuğunu statik konumlandırır, tam genişlik yapar ve alt boşluk ekler. */
+        position: static; /* Statik konumlandırma. */
+        width: 100%; /* Tam genişliği kaplar. */
+        max-height: none; /* Maksimum yüksekliği kaldırır. */
+        margin-bottom: var(--spacing-md); /* İçerik ile arasında boşluk. */
+    }
+
+    /* Tüm ana section'lar için mobil görünümde tam genişlik */
+    section { /* Tüm section elemanları stilleri: İç boşlukları, genişliği ve dış boşlukları mobil görünüm için ayarlar. */
+        padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+        width: 100% !important; /* Tam genişlik alır (önemli olarak ayarlanmıştır). */
+        max-width: none !important; /* Maksimum genişlik kısıtlamasını kaldırır (önemli olarak ayarlanmıştır). */
+        margin: 0 auto var(--spacing-md) auto !important; /* Ortalar ve alt boşluk bırakır (önemli olarak ayarlanmıştır). */
+    }
+
+    #auth-section button { /* Kimlik doğrulama bölümü buton stilleri: Butonların maksimum genişliğini ayarlar. */
+        max-width: 100%; /* Maksimum genişliği ayarlar. */
+    }
+
+    #poems-list-section #poems-div { /* Şiir listesi bölümü şiir div'i stilleri: Şiir kartlarını tek sütuna düşürür. */
+        grid-template-columns: 1fr; /* Tek sütuna düşür. */
+        gap: var(--spacing-md); /* Izgara öğeleri arasında boşluk. */
+    }
+
+    .poem-card { /* Şiir kartı stilleri: İç boşlukları ayarlar. */
+        padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+    }
+
+    #auth-section,
+    #user-profile-section,
+    #edit-poem-section,
+    #edit-comment-section,
+    #admin-panel-section,
+    #user-management-section,
+    #contact-section,
+    #add-poem-section,
+    #about-section { /* Çeşitli bölümlerin stilleri: İç boşluklarını ve maksimum genişliklerini mobil görünüm için ayarlar. */
+        padding: var(--spacing-md); /* İç boşlukları ayarlar. */
+        max-width: none; /* Maksimum genişlik kısıtlamasını kaldırır. */
+    }
+
+    .admin-list-item .details,
+    .admin-list-item .actions { /* Yönetici liste öğesi detayları ve eylemleri stilleri: Mobil görünümde tam genişlik yapar ve ortalar. */
+        flex-basis: 100%; /* Mobil görünümde tam genişlik. */
+        justify-content: center; /* Ortaya hizala. */
+    }
+
+    .admin-list-item .details p { /* Yönetici liste öğesi detayları paragraf stilleri: Mobil görünümde metni ortalar. */
+        text-align: center; /* Metni ortalar. */
+    }
+}
+
+/* Küçük Ekranlar İçin Ek Düzenlemeler (Daha da küçük cihazlar için) */
+@media (max-width: 480px) { /* Maksimum genişlik 480px olduğunda (çok küçük cihazlar): */
+    header h1 { /* Başlık alanı h1 etiketi stilleri: Başlık yazı tipi boyutunu daha da küçültür. */
+        font-size: 1.6rem; /* Yazı tipi boyutunu ayarlar. */
+    }
+
+    .nav-links-group li a { /* Navigasyon bağlantı grubu liste elemanı bağlantı stilleri: Bağlantı yazı tipi boyutunu küçültür. */
+        font-size: 0.9rem; /* Yazı tipi boyutunu ayarlar. */
+    }
+
+    .btn-primary, .btn-danger, .btn-secondary { /* Birincil, tehlike ve ikincil buton stilleri: Butonların yazı tipi boyutunu ve iç boşluklarını ayarlar. */
+        font-size: 0.9rem; /* Yazı tipi boyutunu ayarlar. */
+        padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    }
+
+    section { /* Tüm section elemanları stilleri: İç boşluklarını daha da küçültür. */
+        padding: var(--spacing-sm); /* İç boşlukları ayarlar. */
+    }
+
+    .poem-card h3 { /* Şiir kartı h3 etiketi stilleri: Şiir başlıklarının yazı tipi boyutunu daha da küçültür. */
+        font-size: 1.3rem; /* Yazı tipi boyutunu ayarlar. */
+    }
+
+    .poem-card p { /* Şiir kartı paragraf stilleri: Şiir metninin yazı tipi boyutunu daha da küçültür. */
+        font-size: 0.85rem; /* Yazı tipi boyutunu ayarlar. */
+    }
+}

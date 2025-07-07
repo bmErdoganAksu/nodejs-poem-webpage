@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ünlü Şairlerden Şiirler</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts - Lora ve Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img id="header-logo" src=https://placehold.co/60x60/FFFFFF/000000?text=E.A alt="Şiir Köşesi Logo">
+        <h1>Ünlü Şairlerden Şiirler</h1>
+    </header>
+
+    <nav>
+        <div class="nav-content-wrapper">
+            <ul class="nav-links-group main-nav">
+                <li><a href="#" id="poems-list-link" class="active-link">Şiirler</a></li>
+                <li><a href="#" id="create-poem-link" class="hidden">Şiir Ekle</a></li>
+                <li><a href="#" id="user-profile-link" class="hidden">Profilim</a></li>
+                <li><a href="#" id="admin-panel-link" class="hidden">Yönetici Paneli</a></li>
+                <li><a href="#" id="contact-link">İletişim</a></li>
+                <li><a href="#" id="about-link">Hakkımızda</a></li>
+            </ul>
+            <ul class="nav-links-group auth-nav">
+                <li id="auth-links">
+                    <a href="#" id="auth-main-link" class="btn btn-primary">Giriş / Kayıt</a>
+                </li>
+                <li id="loggedIn-links" class="hidden">
+                    <span id="welcome-message"></span>
+                    <button id="logout-btn" class="btn btn-danger">Çıkış Yap</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="app">
+        <!-- Şiirler Listesi Bölümü -->
+        <aside class="poem-sidebar">
+            <h3>Şiir Başlıkları</h3>
+            <ul id="poem-titles-list">
+                <!-- Şiir başlıkları buraya JS ile yüklenecek -->
+                <li>Şiirler yükleniyor...</li>
+            </ul>
+        </aside>
+
+        <section id="poems-list-section">
+            <h2>Tüm Şiirler</h2>
+            <div id="poems-div">
+                <!-- Şiir kartları buraya JS ile yüklenecek -->
+                <p>Şiirler yükleniyor...</p>
+            </div>
+        </section>
+
+        <!-- Giriş/Kayıt Bölümü -->
+        <section id="auth-section" class="hidden">
+            <div id="login-form-container">
+                <h2>Giriş Yap</h2>
+                <form id="login-form">
+                    <label for="username">Kullanıcı Adı:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Şifre:</label>
+                    <input type="password" id="password" name="password" required>
+                    <p id="login-error" class="error-message hidden"></p>
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                </form>
+                <p>Hesabınız yok mu? <a href="#" id="show-register-form-link">Kayıt Ol</a></p>
+            </div>
+
+            <div id="register-form-container" class="hidden">
+                <h2>Kayıt Ol</h2>
+                <form id="register-form">
+                    <label for="register-username">Kullanıcı Adı:</label>
+                    <input type="text" id="register-username" name="username" required>
+                    <label for="register-email">E-posta:</label>
+                    <input type="email" id="register-email" name="email" required>
+                    <label for="register-password">Şifre:</label>
+                    <input type="password" id="register-password" name="password" required>
+                    <p id="register-error" class="error-message hidden"></p>
+                    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                </form>
+                <p>Zaten hesabınız var mı? <a href="#" id="show-login-form-link">Giriş Yap</a></p>
+            </div>
+        </section>
+
+        <!-- Şiir Ekle Bölümü -->
+        <section id="add-poem-section" class="hidden">
+            <h2>Yeni Şiir Ekle</h2>
+            <form id="add-poem-form">
+                <label for="poem-title">Şiir Başlığı:</label>
+                <input type="text" id="poem-title" name="title" required>
+                <label for="poem-content">Şiir İçeriği:</label>
+                <textarea id="poem-content" name="content" rows="10" required></textarea>
+                <button type="submit" id="add-poem-btn" class="btn btn-primary">Şiir Ekle</button>
+            </form>
+        </section>
+
+        <!-- Kullanıcı Profili Bölümü -->
+        <section id="user-profile-section" class="hidden">
+            <h2>Profilim</h2>
+            <div id="user-details">
+                <p><strong>Kullanıcı Adı:</strong> <span id="profile-username"></span></p>
+                <p><strong>E-posta:</strong> <span id="profile-email"></span></p>
+                <p><strong>Rol:</strong> <span id="profile-role"></span></p>
+                <p><strong>Şiir Yayınlama Yetkisi:</strong> <span id="profile-can-post-poems"></span></p>
+            </div>
+
+            <h3>Şifre Değiştir</h3>
+            <form id="change-password-form">
+                <label for="current-password">Mevcut Şifre:</label>
+                <input type="password" id="current-password" name="currentPassword" required>
+                <label for="new-password">Yeni Şifre:</label>
+                <input type="password" id="new-password" name="newPassword" required>
+                <p id="password-change-message" class="error-message hidden"></p>
+                <button type="submit" id="change-password-btn" class="btn btn-secondary">Şifreyi Değiştir</button>
+            </form>
+
+            <h3 id="user-comments-list-heading">Yorumlarım</h3>
+            <div id="user-comments-list">
+                <!-- Kullanıcının yorumları buraya yüklenecek -->
+            </div>
+            <button id="profile-logout-btn" class="btn btn-danger">Çıkış Yap</button>
+        </section>
+
+        <!-- Şiir Düzenleme Bölümü -->
+        <section id="edit-poem-section" class="hidden">
+            <h2>Şiiri Düzenle</h2>
+            <form id="edit-poem-form">
+                <input type="hidden" id="edit-poem-id">
+                <label for="edit-poem-title">Başlık:</label>
+                <input type="text" id="edit-poem-title" required>
+                <label for="edit-poem-content">İçerik:</label>
+                <textarea id="edit-poem-content" rows="10" required></textarea>
+                <div class="form-actions">
+                    <button type="button" id="cancel-edit-poem-btn" class="btn btn-secondary">İptal</button>
+                    <button type="submit" id="save-edited-poem-btn" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Yorum Düzenleme Bölümü -->
+        <section id="edit-comment-section" class="hidden">
+            <h2>Yorumu Düzenle</h2>
+            <form id="edit-comment-form">
+                <input type="hidden" id="edit-comment-id">
+                <label for="edit-comment-text">Yorum:</label>
+                <textarea id="edit-comment-text" rows="5" required></textarea>
+                <div class="form-actions">
+                    <button type="button" id="cancel-comment-edit-btn" class="btn btn-secondary">İptal</button>
+                    <button type="submit" id="save-edited-comment-btn" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Kullanıcı Yönetimi Bölümü (Admin) -->
+        <section id="user-management-section" class="hidden">
+            <h2>Kullanıcıyı Düzenle</h2>
+            <form id="edit-user-form">
+                <input type="hidden" id="edit-user-id">
+                <label for="edit-username">Kullanıcı Adı:</label>
+                <input type="text" id="edit-username" required>
+                <label for="edit-email">E-posta:</label>
+                <input type="email" id="edit-email" required>
+                <label for="edit-role">Rol:</label>
+                <select id="edit-role">
+                    <option value="user">Kullanıcı</option>
+                    <option value="admin">Yönetici</option>
+                </select>
+                <label for="edit-can-post-poems">Şiir Gönderebilir:</label>
+                <input type="checkbox" id="edit-can-post-poems">
+                <div class="form-actions">
+                    <button type="button" id="cancel-user-management-btn" class="btn btn-secondary">İptal</button>
+                    <button type="submit" id="save-user-changes-btn" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Yönetici Paneli Bölümü -->
+        <section id="admin-panel-section" class="hidden">
+            <h2>Yönetici Paneli</h2>
+            <div class="admin-tabs">
+                <button id="manage-poems-tab" class="admin-tab-btn active-tab">Şiirleri Yönet</button>
+                <button id="manage-users-tab" class="admin-tab-btn">Kullanıcıları Yönet</button>
+                <button id="manage-comments-tab" class="admin-tab-btn">Yorumları Yönet</button>
+            </div>
+
+            <div id="admin-poems-content" class="admin-tab-content">
+                <h3>Şiir Yönetimi</h3>
+                <div id="admin-poem-list">
+                    <!-- Yönetici için şiirler buraya yüklenecek -->
+                </div>
+            </div>
+
+            <div id="admin-users-content" class="admin-tab-content hidden">
+                <h3>Kullanıcı Yönetimi</h3>
+                <div id="admin-user-list">
+                    <!-- Yönetici için kullanıcılar buraya yüklenecek -->
+                </div>
+            </div>
+
+            <div id="admin-comments-content" class="admin-tab-content hidden">
+                <h3>Yorum Yönetimi</h3>
+                <div id="comments-for-management">
+                    <!-- Yönetici için yorumlar buraya yüklenecek -->
+                </div>
+                <button id="delete-selected-comments-btn" class="btn btn-danger hidden">Seçilenleri Sil</button>
+            </div>
+        </section>
+
+        <!-- İletişim Bölümü -->
+        <section id="contact-section" class="hidden">
+            <h2>Bize Ulaşın</h2>
+            <div class="contact-content">
+                <p>Sorularınız, önerileriniz veya geri bildirimleriniz için bizimle iletişime geçmekten çekinmeyin.</p>
+                <ul>
+                    <li><a href="mailto:info@siirkosesi.com"><i class="fas fa-envelope"></i> info@siirkosesi.com</a></li>
+                    <li><a href="tel:+901234567890"><i class="fas fa-phone"></i> +90 (123) 456 7890</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com/erdogan__aksu"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Siteyi Nasıl Geliştirdim Bölümü -->
+        <section id="about-section" class="hidden">
+            <div class="content-card">
+                <h2>Web Sitemiz: Şiir Severlerin Dijital Buluşma Noktası</h2>
+                <p>
+                    Şiir tutkunlarına özel olarak geliştirilen platformumuz, şiirleri keşfetme, onaylı şekilde paylaşma ve toplulukla etkileşim kurma olanağı sunan, kullanıcı dostu bir dijital alan sunmaktadır.
+                </p>
+
+                <h3>Vizyonumuz ve Platform Yapısı</h3>
+                <p>
+                    Amacımız, şiirin ilham veren gücünü dijital ortama taşıyarak, kullanıcıların geniş bir şiir koleksiyonuna ulaşmasını, kendi eserlerini yöneticinin onayıyla paylaşmasını ve toplulukla yorumlar aracılığıyla bağ kurmasını sağlamaktır. Kişiye özel profiller ve gelişmiş yönetici paneli ile hem okuyucuya hem yazara zengin bir deneyim sunuyoruz.
+                </p>
+
+                <p><strong>Temel Özellikler:</strong></p>
+                <ul>
+                    <li><strong>Şiir Keşfi:</strong> Geniş arşivde kolay arama ve filtreleme ile şiirlere ulaşım.</li>
+                    <li><strong>Yorumlama:</strong> Okunan şiirler hakkında görüş paylaşımı ve etkileşim.</li>
+                    <li><strong>Kullanıcı Profili:</strong> Kişisel şiir paylaşımları ve yorum geçmişinin yönetimi.</li>
+                    <li><strong>Şiir Paylaşımı:</strong> Kendi yazdığınız şiirleri toplulukla paylaşma.</li>
+                    <li><strong>İletişim Formu:</strong> Site yönetimi ile doğrudan ve hızlı iletişim.</li>
+                    <li><strong>Yönetici Paneli:</strong> Gelişmiş kontrol paneli ile içerik ve kullanıcı yönetimi:
+                        <ul>
+                            <li><strong>Kullanıcı Yönetimi:</strong> Üye listeleme, düzenleme, silme ve rol atama işlemleri.</li>
+                            <li><strong>Şiir Yönetimi:</strong> Platformdaki şiirleri inceleme, düzenleme ve kaldırma.</li>
+                            <li><strong>Yorum Yönetimi:</strong> Yorumları denetleme ve moderasyon.</li>
+                            <li><strong>Site İstatistikleri:</strong> Kullanıcı, şiir sayısı gibi temel verilerin takibi ve ayar kontrolü.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Kullanılan Teknolojiler</h3>
+                <p>
+                    Hızlı, güvenli ve sürdürülebilir bir deneyim için modern web teknolojileri kullanılmıştır:
+                </p>
+
+                <h4>Ön Yüz (Frontend)</h4>
+                <p>
+                    Kullanıcının doğrudan etkileşimde bulunduğu arayüz şu teknolojilerle geliştirildi:
+                </p>
+                <ul>
+                    <li><strong>HTML5:</strong> Semantik yapılarla düzenli ve erişilebilir içerik sunumu.</li>
+                    <li><strong>CSS3:</strong> Duyarlı (responsive) tasarım ve görsel optimizasyon.</li>
+                    <li><strong>JavaScript:</strong> Dinamik işlemler (şiir ekleme, yorum gönderme, sekme geçişleri vb.).</li>
+                </ul>
+
+                <h4>Arka Yüz (Backend)</h4>
+                <p>
+                    Uygulamanın veri işleme ve sunucu tarafı, Node.js ve Express.js altyapısı üzerinde kuruludur. MongoDB ile veriler saklanmakta, RESTful API'ler aracılığıyla ön yüzle iletişim sağlanmaktadır.
+                </p>
+
+                <p><strong>Proje Dosya Yapısı:</strong></p>
+                <pre><code>frontend/
+├── assets/
+│   └── images/          # Resimler ve diğer medya dosyaları
+├── css/
+│   └── styles.css       # Ana stil dosyası
+├── js/
+│   └── script.js        # Ana JavaScript dosyası (DOM manipülasyonu, olay dinleyicileri)
+├── index.html           # Ana HTML dosyası
+└── README.md            # Proje hakkında genel bilgi
+backend/
+├── config/
+│   └── db.js            # Veritabanı bağlantı yapılandırması
+├── middleware/
+│   ├── adminMiddleware.js    # Yalnızca yöneticiye özgü erişim kontrolü için middleware
+│   └── authMiddleware.js     # İsteklerin kimliğini doğrulamak için middleware (örn. JWT doğrulama)
+├── models/
+│   ├── Poem.js               # Şiir verileri için Mongoose/Sequelize modeli
+│   └── User.js               # Kullanıcı verileri için Mongoose/Sequelize modeli
+├── routes/
+│   ├── adminRoutes.js        # Yönetici eylemleri için API rotaları (örn. kullanıcı yönetimi, yorum silme)
+│   ├── authRoutes.js         # Kullanıcı kimlik doğrulaması için API rotaları (kayıt, giriş, profil yönetimi)
+│   ├── commentRoutes.js      # Yorumla ilgili işlemler için API rotaları (yorum ekleme, düzenleme, silme)
+│   └── poemRoutes.js         # Şiirle ilgili işlemler için API rotaları (şiirler için CRUD, beğenme)
+├── .env                      # Ortam değişkenleri (örn. veritabanı URI, JWT sırrı)
+├── app.js                    # Node.js uygulamasının ana giriş noktası (Express'i ayarlar, DB'ye bağlanır, rotaları ve middleware'i kullanır)
+└── package.json              # Proje bağımlılıkları ve betikler
+</code></pre>
+
+                <h4>Veritabanı</h4>
+                <p>
+                    MongoDB kullanılarak kullanıcı, şiir ve yorum verileri güvenli biçimde saklanmaktadır. Mongoose şemaları ile veri tutarlılığı ve validasyonu sağlanır.
+                </p>
+
+                <h4>İş Akışı</h4>
+                <p>
+                    Kullanıcı isteği → İlgili rota (`routes/`) → Middleware doğrulaması → Model üzerinden veritabanı işlemi → JSON yanıt.
+                </p>
+
+                <p>
+                    Bu modüler, güvenli ve ölçeklenebilir yapı sayesinde kullanıcılarımıza şiirle dolu, etkileşimli ve keyifli bir deneyim sunuyoruz. Platformumuz; kullanıcı geri bildirimleri, yeni özellikler ve güncellemelerle sürekli olarak gelişmeye devam etmektedir.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Şiir Köşesi. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
